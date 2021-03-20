@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>响应式滑动菜单</title>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<style>
+*{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  color: white;
+}
+
+.mynav li:nth-child(1){
+  background: rgb(206,101,28);
+}
+.mynav li:nth-child(2){
+  background: rgb(231,146,16);
+}
+.mynav li:nth-child(3){
+  background: rgb(34,146,188);
+}
+.mynav li:nth-child(4){
+  background: rgb(29,108,160);
+}
+.mynav li:nth-child(5){
+  background: rgb(28,54,70);
+}
+.mynav li:nth-child(6){
+  background: rgb(22,40,53);
+}
+.container{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+header{
+  margin: 20px auto;
+}
+header h1{
+  text-align: center;
+  color: #666666;
+  font-size: 28px;
+  font-weight: normal;
+}
+@media all and (min-width:800px){
+  .mylist{
+    margin: auto;
+  }
+  .mylist li{
+    width: 16.6%;
+    float: left;
+    height: 220px;
+    text-align: center;
+    transition: all .5s;
+  }
+  .mylist li:hover{
+    height: 280px;
+  }
+  .mylist a{
+    display: block;
+    height: 100px;
+  }
+  .mylist a:hover .icon+span{
+    margin-top: 100px;
+    transition: margin 1s;
+  }
+  .icon{
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+    margin: 20px auto 0;
+    border-radius: 15px;
+  }
+  .icon + span{
+    margin-top: 35px;
+    font-size: 20px;
+    transition: margin 1s;
+  }
+  .icon img{
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 30px transparent;
+    transition: all .8s ease-in-out;
+    background: rgba(255,255,255,0.1);
+  }
+  .mylist a:hover img{
+    box-shadow: 0 0 0 0px rgba(255,255,255,0.2);
+    transition: all .8s ease-in-out;
+  }
+  #logo{
+    display: none;
+  }
+  .mylist li span{
+    display: block;
+  }
+}
+@media all and (min-width: 520px)  and (max-width: 798px){
+  .mylist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mylist li{
+    width: 50%;
+    height: 80px;
+  }
+  .mylist a{
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    align-items: center;
+  }
+  .mylist span{
+    margin-left: 30px;
+  }
+  .icon{
+    border: 5px solid transparent;
+    width: 50px;
+    height: 50px;
+    background:rgba(255,255,255,0.2);
+    border-radius: 30px;
+    line-height: 60px;
+    text-align: center;
+
+  }
+  .mylist a:hover .icon{
+    border: 5px solid rgba(255,255,255,0.1);
+  }
+  #logo{
+    display: none;
+  }
+  .mylist li span{
+    display: block;
+  }
+}
+@media all and (max-width: 519px ){
+  .mylist{
+    display: none;
+  }
+  #logo{
+    display: block;
+    margin-bottom: 20px;
+  }
+  .mylist li{
+    height: 80px;
+  }
+  .mylist a{
+    height: 80px;
+  }
+  .mylist li span{
+    line-height: 80px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 30px;
+  }
+  .icon img{
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+
+</style>
+<body>
+<div class="container">
+  <header>
+    <h1>响应式滑动菜单</h1>
+  </header>
+  <div class="mynav">
+    <a href="#">
+      <img src="1.png" id="logo">
+    </a>
+    <ul class="mylist" id="mylist">
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="2.png">
+          </span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="3.png">
+          </span>
+          <span>Services</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="4.png">
+          </span>
+          <span>Portfolio</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="5.png">
+          </span>
+          <span>Blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="6.png">
+          </span>
+          <span>The team</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="icon">
+            <img src="7.png">
+          </span>
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var i=0;
+  $("#logo").click(function (){
+    if(i==0){
+      $("#mylist").css("display","block");
+      i=1;
+      return false;
+    }else{
+      $("#mylist").css("display","none");
+      i=0;
+      return false;
+    }
+  });
+</script>
+</body>
+</html>
+
