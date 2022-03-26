@@ -1,3 +1,4 @@
+'''爬取网站上的车辆图片和成立信息'''
 from lxml import etree
 import re
 import os
